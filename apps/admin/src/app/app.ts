@@ -8,5 +8,5 @@ import { RouterModule } from '@angular/router';
   encapsulation:ViewEncapsulation.None,
   changeDetection:ChangeDetectionStrategy.OnPush
 })
-export class App {
+export default class App {
 }

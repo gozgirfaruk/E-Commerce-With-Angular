@@ -1,3 +1,18 @@
 import { Route } from '@angular/router';
 
-export const appRoutes: Route[] = [];
+export const appRoutes: Route[] = [
+    {
+        path:"login",
+        loadComponent:() =>import("./pages/tsPages/login")
+    },
+    {
+        path:"",
+        loadComponent:() =>import("./pages/tsPages/layout"),
+        children:[
+            {
+                path:"",
+                loadComponent:()=>import("./pages/tsPages/home")
+            }
+        ]
+    }
+];
