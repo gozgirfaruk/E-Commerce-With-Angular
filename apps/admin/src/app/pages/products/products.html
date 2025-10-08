@@ -1,0 +1,22 @@
+<app-blank pageTitle="Products"></app-blank>
+
+<flexi-grid [data]="myRule()" [showCaption]="true" captionTitle="Products List" [showExportExcelBtn]="true">
+  <flexi-grid-column title="Product Image" textAlign="center" width="70px">
+    <ng-template flexiGridCellTemplate let-item>
+      <img [src]="item.photo" width="75" height="75" style="object-fit: contain;">
+    </ng-template>
+  </flexi-grid-column>
+
+  <flexi-grid-column field="name" title="Product Name"></flexi-grid-column>
+  <flexi-grid-column field="price" title="Product Price" filterType="number" format="c" symbol="$"></flexi-grid-column>
+  <flexi-grid-column field="stock" title="Product Stock" filterType="number"></flexi-grid-column>
+
+  <ng-template flexiGridColumnCommandTemplate let-item>
+    <flexi-button btnIcon="eye_tracking" btnColor="secondary" title="Detail" btnSize="small" flexiTooltip></flexi-button>
+    <flexi-button btnIcon="autorenew" btnColor="info" title="Update" btnSize="small" flexiTooltip></flexi-button>
+    <flexi-button btnIcon="delete" btnColor="danger" title="Delete" btnSize="small" flexiTooltip></flexi-button>
+  </ng-template>
+</flexi-grid>
+
+
+

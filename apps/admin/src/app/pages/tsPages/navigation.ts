@@ -6,13 +6,13 @@ export interface NavigationModel{
 
 export const navigations:NavigationModel[]=[
    {
-    title:"Ana Sayfa",
-    url:"/aa",
+    title:"Home",
+    url:"/",
     icon:"home"
    },
    {
-    title:"Ürünler",
-    url:"/bb",
-    icon:"box"
+    title:"Products",
+    url:"/products",
+    icon:"deployed_code"
    }
 ]
