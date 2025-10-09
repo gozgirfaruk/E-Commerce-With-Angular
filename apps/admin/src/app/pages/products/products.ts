@@ -1,7 +1,9 @@
-import { ChangeDetectionStrategy, Component, inject, signal, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, signal, ViewEncapsulation } from '@angular/core';
 import Blank from '../../components/blank';
 import { Common } from '../../services/common';
-import { FlexiGridModule } from 'flexi-grid';
+import { FlexiGridFilterDataModel, FlexiGridModule } from 'flexi-grid';
+import { httpResource } from '@angular/common/http';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 
 
 export interface productModule{
@@ -13,24 +15,30 @@ export interface productModule{
 }
 
 @Component({
-  imports: [Blank,FlexiGridModule],
+  imports: [Blank,FlexiGridModule,RouterModule],
   templateUrl: './products.html',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export default class Products {
+  readonly  result = httpResource<productModule[]>(()=> "http://localhost:3000/products");
+  readonly  data = computed(()=>this.result.value() ?? []);
+  readonly  loading = computed(()=>this.result.isLoading());
+
   readonly #common = inject(Common);
-  constructor(){
+  constructor(private myRoute:Router){
     this.#common.set("Products","/products","deployed_code");
   }
 
-
-  readonly myRule =signal<productModule[]>([
+    readonly categoryFilter = signal<FlexiGridFilterDataModel[]>([
     {
-      photo:'https://images.unsplash.com/photo-1591337676887-a217a6970a8a?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      name:'iPhone 11',
-      price:689,
-      stock:10
+      name:'Phone',
+      value:'Phone'
+    },
+    {
+      name:'Laptop',
+      value:'Laptop'
     }
   ]);
+
 }
