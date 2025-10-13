@@ -1,3 +1,34 @@
 <app-blank pageTitle="Product Create"></app-blank>
 
-<p>Create Page Works</p>
+<div class="row">
+  <div class="col-md-4 col-12">
+    <div class="card">
+      <div class="card-header">
+        <h4>Add Product</h4>
+      </div>
+      <div class="card-body">
+        <form #form="ngForm" autocomplete="off" (ngSubmit)="save(form)">
+          <div class="form-group">
+            <label>Product Name</label>
+            <input type="text" class="form-control" ngModel name="name"/>
+          </div>
+          <div class="form-group mt-2">
+            <label>Product Image</label>
+            <input type="text" class="form-control" ngModel name="imageUrl"/>
+          </div>
+          <div class="form-group mt-2">
+            <label>Product Price</label>
+            <input type="text" class="form-control" ngModel name="price" />
+          </div>
+          <div class="form-group mt-2">
+            <label>Product Stock</label>
+            <input type="text" class="form-control" ngModel name="stock" />
+          </div>
+          <div class="form-group mt-2 d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
