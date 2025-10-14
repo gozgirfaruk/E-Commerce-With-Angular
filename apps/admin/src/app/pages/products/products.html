@@ -19,7 +19,7 @@
   <ng-template flexiGridColumnCommandTemplate let-item>
     <flexi-button btnIcon="eye_tracking" btnColor="secondary" title="Detail" btnSize="small" flexiTooltip></flexi-button>
     <flexi-button btnIcon="autorenew" btnColor="info" title="Update" btnSize="small" flexiTooltip></flexi-button>
-    <flexi-button btnIcon="delete" btnColor="danger" title="Delete" btnSize="small" flexiTooltip></flexi-button>
+    <flexi-button (click)="delete(item.id)" btnIcon="delete"  btnColor="danger" title="Delete" btnSize="small" flexiTooltip></flexi-button>
   </ng-template>
 </flexi-grid>
 
